@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/posterMovie"
+        android:contentDescription="@string/posterMovie"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/titleMovie"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/titleMovie"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/genresMovie"
+        app:layout_constraintStart_toStartOf="@id/posterMovie"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="название" />
+
+    <TextView
+        android:id="@+id/genresMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintTop_toBottomOf="@id/titleMovie"
+        app:layout_constraintBottom_toTopOf="@id/ratingMovie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/posterMovie"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="жанры" />
+    <TextView
+        android:id="@+id/ratingMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintTop_toBottomOf="@id/genresMovie"
+        app:layout_constraintBottom_toTopOf="@id/genresMovie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/posterMovie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        tools:text="рейтинг" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
