@@ -1,7 +1,10 @@
-package com.example.simpleapp
+package com.example.simpleapp.utills
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.simpleapp.ui.activity.InteractorImpl
+import com.example.simpleapp.ui.activity.MainViewModel
+import com.example.simpleapp.data.RepositoryImpl
 
 @SuppressWarnings("unchecked")
 object ViewModelFactory : ViewModelProvider.Factory {

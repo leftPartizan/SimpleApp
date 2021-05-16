@@ -1,4 +1,6 @@
-package com.example.simpleapp
+package com.example.simpleapp.utills
+
+import com.example.simpleapp.data.ItemMovie
 
 object MoviesFactory {
 
