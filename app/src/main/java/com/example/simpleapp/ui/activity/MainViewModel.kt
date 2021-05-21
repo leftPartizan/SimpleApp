@@ -7,7 +7,8 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val interactorImpl: Interactor) : ViewModel(), IMainViewModel {
+    private val interactorImpl: Interactor
+) : ViewModel(), IMainViewModel {
 
     val listOfMovie = MutableLiveData<List<ItemMovie>>()
 
