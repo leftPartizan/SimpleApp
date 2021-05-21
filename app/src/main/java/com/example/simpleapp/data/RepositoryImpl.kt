@@ -10,7 +10,8 @@ class RepositoryImpl @Inject constructor(
 ) : Repository {
 
     override fun getAllMovies(): Single<List<ItemMovie>> {
-        return swapiService.getAllMovies().subscribeOn(Schedulers.io())
+        return swapiService.getAllMovies()
+            .subscribeOn(Schedulers.io())
             .map { it.toListItemMovies() }
     }
 }
