@@ -4,8 +4,9 @@ import com.example.simpleapp.utills.MoviesFactory
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class RepositoryImpl : Repository {
+class RepositoryImpl @Inject constructor() : Repository {
 
     override fun getAllMovies(): Single<List<ItemMovie>> {
         return Single.just(MoviesFactory.createListMovies())
