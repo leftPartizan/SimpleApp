@@ -3,8 +3,10 @@ package com.example.simpleapp.ui.activity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.simpleapp.utills.ViewModelFactory
+import androidx.lifecycle.ViewModelProvider
+import com.example.simpleapp.app.App
 import com.example.simpleapp.databinding.ActivityMainBinding
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,9 +16,13 @@ class MainActivity : AppCompatActivity() {
         Adapter()
     }
 
-    private val viewModel: MainViewModel by viewModels { ViewModelFactory }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: MainViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        App.appComponent.activitySubComponent().create(this).inject(this)
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
