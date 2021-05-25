@@ -33,9 +33,11 @@ class Adapter : ListAdapter<ItemMovie, Adapter.MovieViewHolder>(ItemMovie.Diff) 
         )
 
         fun bind(item: ItemMovie) {
-            itemMovie.titleMovie.text = item.name
-            itemMovie.genresMovie.text = item.genres
-            itemMovie.ratingMovie.text = item.rating
+            itemMovie.titleMovie.text = item.title
+            itemMovie.episodeMovie.text = "episode ${item.episode_id}"
+            itemMovie.openingCrawlMovieText.text = item.opening_crawl
+            itemMovie.producerMovie.text = "producers: ${item.producer}"
+            itemMovie.releaseDateMovie.text = item.release_date
         }
     }
 }

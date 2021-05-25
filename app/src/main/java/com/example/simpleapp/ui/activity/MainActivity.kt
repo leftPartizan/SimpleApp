@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: MainViewModel by viewModels { viewModelFactory }
+    private val viewModel: IMainViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         App.appComponent.activitySubComponent().create(this).inject(this)
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel.updateAllMovies()
-        viewModel.listOfMovie.observe(this, { adapter.submitList(it) })
+        viewModel.listOfMovies.observe(this) {adapter.submitList(it)}
         binding.recyclerView.adapter = adapter
     }
 

@@ -3,7 +3,7 @@ package com.example.simpleapp.app
 import android.app.Application
 import com.example.simpleapp.di.AppComponent
 
-class App: Application() {
+class App : Application() {
 
     companion object {
         lateinit var appComponent: AppComponent

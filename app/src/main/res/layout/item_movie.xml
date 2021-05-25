@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:layout_marginVertical="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <ImageView
-        android:id="@+id/posterMovie"
-        android:contentDescription="@string/posterMovie"
-        android:layout_width="40dp"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/titleMovie"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-    </ImageView>
 
     <TextView
         android:id="@+id/titleMovie"
@@ -24,47 +13,52 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/genresMovie"
-        app:layout_constraintStart_toStartOf="@id/posterMovie"
+        app:layout_constraintBottom_toTopOf="@id/episodeMovie"
         app:layout_constraintEnd_toEndOf="parent"
         android:textAlignment="center"
         tools:text="название" />
 
     <TextView
-        android:id="@+id/genresMovie"
-        android:layout_width="match_parent"
+        android:id="@+id/episodeMovie"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintTop_toBottomOf="@id/titleMovie"
-        app:layout_constraintBottom_toTopOf="@id/ratingMovie"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/posterMovie"
+        app:layout_constraintBottom_toTopOf="@id/producerMovie"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textAlignment="center"
-        tools:text="жанры" />
+        tools:text="эпизод" />
+
     <TextView
-        android:id="@+id/ratingMovieText"
-        android:text="Рейтинг: "
+        android:id="@+id/producerMovie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintHorizontal_bias="0"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintTop_toBottomOf="@id/genresMovie"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/posterMovie"
-        app:layout_constraintEnd_toEndOf="@id/ratingMovie"
-        tools:text="рейтинг" />
+        app:layout_constraintTop_toBottomOf="@id/episodeMovie"
+        app:layout_constraintBottom_toTopOf="@id/releaseDateMovie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="продюсеры" />
+
     <TextView
-        android:id="@+id/ratingMovie"
+        android:id="@+id/releaseDateMovie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintHorizontal_bias="0"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintTop_toBottomOf="@id/genresMovie"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ratingMovieText"
+        app:layout_constraintTop_toBottomOf="@id/producerMovie"
+        app:layout_constraintBottom_toTopOf="@id/openingCrawlMovieText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="рейтинг" />
+        tools:text="дата релиза" />
 
-
+    <TextView
+        android:id="@+id/openingCrawlMovieText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintTop_toBottomOf="@id/releaseDateMovie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/openingCrawlExample"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,8 @@ import javax.inject.Inject
 
 
 class InteractorImpl @Inject constructor(
-    private val repository: Repository) : Interactor {
+    private val repository: Repository
+) : Interactor {
 
     override fun getAllMovies(): Single<List<ItemMovie>> {
         return repository.getAllMovies()
