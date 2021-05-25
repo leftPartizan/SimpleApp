@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.simpleapp.data.ItemMovie
+import com.example.simpleapp.data.database.entities.ItemMovie
 import com.example.simpleapp.databinding.ItemMovieBinding
 
 class Adapter : ListAdapter<ItemMovie, Adapter.MovieViewHolder>(ItemMovie.Diff) {

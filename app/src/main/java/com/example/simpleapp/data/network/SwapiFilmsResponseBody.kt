@@ -1,7 +1,7 @@
 package com.example.simpleapp.data.network
 
 import android.os.Parcelable
-import com.example.simpleapp.data.ItemMovie
+import com.example.simpleapp.data.database.entities.ItemMovie
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -21,6 +21,7 @@ data class SwapiFilm(
     @SerializedName("release_date") val release_date: String,
 ) : Parcelable {
     fun getMovie() = ItemMovie(
+        id = null,
         title = title,
         episode_id = episode_id,
         opening_crawl = opening_crawl,

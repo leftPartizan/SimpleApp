@@ -1,9 +1,8 @@
 package com.example.simpleapp.ui.activity
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.simpleapp.data.ItemMovie
+import com.example.simpleapp.data.database.entities.ItemMovie
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.addTo

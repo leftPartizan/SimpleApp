@@ -1,5 +1,6 @@
 package com.example.simpleapp.data
 
+import com.example.simpleapp.data.database.entities.ItemMovie
 import com.example.simpleapp.data.network.SwapiService
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
