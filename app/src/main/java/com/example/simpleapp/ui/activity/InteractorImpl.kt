@@ -10,7 +10,7 @@ class InteractorImpl @Inject constructor(
     private val repository: Repository
 ) : Interactor {
 
-    override fun getAllMovies(): Single<List<ItemMovie>> {
-        return repository.getAllMovies()
+    override fun getAllMovies(forceUpdateCache: Boolean): Single<List<ItemMovie>> {
+        return repository.getAllMovies(forceUpdateCache)
     }
 }

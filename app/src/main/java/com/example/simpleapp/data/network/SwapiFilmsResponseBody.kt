@@ -20,8 +20,8 @@ data class SwapiFilm(
     @SerializedName("producer") val producer: String,
     @SerializedName("release_date") val release_date: String,
 ) : Parcelable {
+
     fun getMovie() = ItemMovie(
-        id = null,
         title = title,
         episode_id = episode_id,
         opening_crawl = opening_crawl,

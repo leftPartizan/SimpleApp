@@ -15,8 +15,8 @@ class MainViewModel @Inject constructor(
     override val listOfMovies = MutableLiveData<List<ItemMovie>>()
     val compositeDisposable = CompositeDisposable()
 
-    override fun updateAllMovies() {
-        interactorImpl.getAllMovies()
+    override fun updateAllMovies(forceUpdateCache : Boolean) {
+        interactorImpl.getAllMovies(forceUpdateCache)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {

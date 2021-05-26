@@ -11,7 +11,7 @@ import javax.inject.Inject
 interface MoviesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun updateTask(moviesEntity: MoviesEntity): Long
+    suspend fun updateMovie(moviesEntity: MoviesEntity): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun updateAllMovies(listMoviesEntity: List<MoviesEntity>)

@@ -5,5 +5,5 @@ import io.reactivex.rxjava3.core.Single
 
 interface Repository {
 
-    fun getAllMovies(): Single<List<ItemMovie>>
+    fun getAllMovies(forceUpdateCache : Boolean = false): Single<List<ItemMovie>>
 }

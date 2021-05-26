@@ -4,7 +4,6 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.simpleapp.data.database.movies.MoviesEntity
 
 data class ItemMovie(
-    val id: Long?,
     val title: String,
     val episode_id: String,
     val opening_crawl: String,
@@ -24,7 +23,6 @@ data class ItemMovie(
 
 fun ItemMovie.toMoviesEntity(): MoviesEntity {
     return MoviesEntity(
-        id = id,
         title = title,
         episode_id = episode_id,
         opening_crawl = opening_crawl,
@@ -35,7 +33,6 @@ fun ItemMovie.toMoviesEntity(): MoviesEntity {
 
 fun MoviesEntity.toItemMovie(): ItemMovie {
     return ItemMovie(
-        id = id,
         title = title,
         episode_id = episode_id,
         opening_crawl = opening_crawl,
