@@ -13,13 +13,14 @@ class MainViewModel @Inject constructor(
 ) : ViewModel(), IMainViewModel {
 
     override val listOfMovies = MutableLiveData<List<ItemMovie>>()
-    val compositeDisposable = CompositeDisposable()
+    private val compositeDisposable = CompositeDisposable()
 
-    override fun updateAllMovies(forceUpdateCache : Boolean) {
+    override fun updateAllMovies(forceUpdateCache: Boolean) {
         interactorImpl.getAllMovies(forceUpdateCache)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
+                    if (forceUpdateCache) listOfMovies.postValue(emptyList())
                     listOfMovies.postValue(it)
                 }, {
                     //  do nothing

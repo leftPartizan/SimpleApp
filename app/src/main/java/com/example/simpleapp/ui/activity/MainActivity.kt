@@ -1,34 +1,30 @@
 package com.example.simpleapp.ui.activity
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import com.example.simpleapp.R
 import com.example.simpleapp.app.App
 import com.example.simpleapp.databinding.ActivityMainBinding
-import javax.inject.Inject
+import com.example.simpleapp.di.ActivitySubComponent
+import com.example.simpleapp.ui.activity.fragments.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
-    private val adapter: Adapter by lazy {
-        Adapter()
-    }
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val viewModel: IMainViewModel by viewModels { viewModelFactory }
+    lateinit var activitySubComponent: ActivitySubComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.activitySubComponent().create(this).inject(this)
+        activitySubComponent = App.appComponent.activitySubComponent().create(this)
+        activitySubComponent.inject(this)
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.updateAllMovies()
-        viewModel.listOfMovies.observe(this) {adapter.submitList(it)}
-        binding.recyclerView.adapter = adapter
+
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragment_container_view, MainFragment())
+            .commit()
     }
 
     override fun onDestroy() {

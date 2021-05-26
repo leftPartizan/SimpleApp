@@ -1,7 +1,7 @@
 package com.example.simpleapp.ui.activity
 
-import com.example.simpleapp.data.database.entities.ItemMovie
 import com.example.simpleapp.data.Repository
+import com.example.simpleapp.data.database.entities.ItemMovie
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 

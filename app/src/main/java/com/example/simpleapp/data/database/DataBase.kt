@@ -7,10 +7,10 @@ import androidx.room.RoomDatabase
 import com.example.simpleapp.data.database.movies.MoviesDao
 import com.example.simpleapp.data.database.movies.MoviesEntity
 
-@Database( entities = [MoviesEntity::class], version = 1, exportSchema = false)
+@Database(entities = [MoviesEntity::class], version = 1, exportSchema = false)
 abstract class DataBase : RoomDatabase() {
 
-    abstract fun getMoviesDao() : MoviesDao
+    abstract fun getMoviesDao(): MoviesDao
 
     companion object {
         @Volatile
