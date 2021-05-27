@@ -1,4 +1,4 @@
-package com.example.simpleapp.data.database.entities
+package com.example.simpleapp.data.entities
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.simpleapp.data.database.movies.MoviesEntity

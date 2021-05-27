@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="greyLight">@android:color/darker_gray</color>
+    <color name="primaryColor">#FF6200EE</color>
 </resources>

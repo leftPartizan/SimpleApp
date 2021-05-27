@@ -1,7 +1,7 @@
 package com.example.simpleapp.data.network
 
 import android.os.Parcelable
-import com.example.simpleapp.data.database.entities.ItemMovie
+import com.example.simpleapp.data.entities.ItemMovie
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 

@@ -1,4 +1,4 @@
-package com.example.simpleapp.ui.activity.fragments
+package com.example.simpleapp.ui.activity.fragments.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.simpleapp.R
 import com.example.simpleapp.databinding.FragmentMainBinding
-import com.example.simpleapp.ui.activity.Adapter
-import com.example.simpleapp.ui.activity.IMainViewModel
 import com.example.simpleapp.ui.activity.MainActivity
-import com.example.simpleapp.ui.activity.MainViewModel
-import okhttp3.internal.notify
-import okhttp3.internal.notifyAll
+import com.example.simpleapp.ui.activity.fragments.settings.SettingsFragment
 import javax.inject.Inject
+
 
 class MainFragment : Fragment() {
 
@@ -28,7 +25,7 @@ class MainFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: IMainViewModel by viewModels<MainViewModel> {
+    private val viewModel: MainViewModel by viewModels<MainViewModelImpl> {
         viewModelFactory
     }
 
@@ -41,13 +38,16 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMainBinding.inflate(layoutInflater, container, false)
-        return _binding?.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setSaveButtonListener()
+
         viewModel.listOfMovies.observe(viewLifecycleOwner) {
             adapter.submitList(it)
             binding.swipeRefresh.isRefreshing = false
@@ -62,5 +62,15 @@ class MainFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun setSaveButtonListener() {
+        binding.toolbarContent.mainButtonToolbarOpenSettings.setOnClickListener {
+            parentFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_view, SettingsFragment())
+                .addToBackStack(null)
+                .commit()
+        }
     }
 }
