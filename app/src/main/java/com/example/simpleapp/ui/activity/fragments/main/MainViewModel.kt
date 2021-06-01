@@ -7,4 +7,5 @@ interface MainViewModel {
 
     val listOfMovies: LiveData<List<ItemMovie>>
     fun updateAllMovies(forceUpdateCache: Boolean = false)
+    fun moveToSettingsScreen()
 }

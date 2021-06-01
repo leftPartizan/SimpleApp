@@ -9,7 +9,13 @@ import dagger.BindsInstance
 import dagger.Subcomponent
 
 @ActivityScope
-@Subcomponent(modules = [ActivityInteractorModule::class, ViewModelModule::class])
+@Subcomponent(
+    modules = [
+        ActivityInteractorModule::class,
+        ViewModelModule::class,
+        NavigationModule::class
+    ]
+)
 interface ActivitySubComponent {
 
     fun inject(mainActivity: MainActivity)
