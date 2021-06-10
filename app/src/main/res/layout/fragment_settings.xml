@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    android:padding="32dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="32dp">
 
     <EditText
         android:id="@+id/userName"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:maxLength="20"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:layout_gravity="center"
-        android:autofillHints="user name"
         android:layout_marginBottom="32dp"
+        android:autofillHints="user name"
         android:hint="введите ваше имя"
         android:inputType="text"
+        android:maxLength="20"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/userEmail"
-        android:layout_height="wrap_content"
         android:layout_width="200dp"
-        android:maxLength="20"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="32dp"
-        android:hint="введите почту"
         android:autofillHints="email"
+        android:hint="введите почту"
         android:inputType="textEmailAddress"
+        android:maxLength="20"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         tools:ignore="HardcodedText" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveSettings"
-        android:text="SAVE"
-        android:layout_height="wrap_content"
-        app:cornerRadius="10dp"
         android:layout_width="200dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="SAVE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:cornerRadius="10dp"
         tools:ignore="HardcodedText" />
 </LinearLayout>

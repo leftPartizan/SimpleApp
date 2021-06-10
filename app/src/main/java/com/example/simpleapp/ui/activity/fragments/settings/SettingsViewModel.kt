@@ -9,4 +9,5 @@ interface SettingsViewModel {
     val userEmail: LiveData<String>
     fun saveSettings(userName: String, userEmail: String): Completable
     fun getSettings()
+    fun moveToBack()
 }

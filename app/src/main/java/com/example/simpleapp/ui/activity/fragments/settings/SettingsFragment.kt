@@ -34,7 +34,7 @@ class SettingsFragment : Fragment() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (activity as MainActivity).activitySubComponent.inject(this)
+        (activity as MainActivity).activitySubComponent?.inject(this)
         super.onCreate(savedInstanceState)
     }
 
@@ -59,7 +59,7 @@ class SettingsFragment : Fragment() {
         binding.saveSettings.setOnClickListener {
             viewModel.saveSettings(userName, userEmail).subscribe(
                 {
-                    parentFragmentManager.popBackStack()
+                    viewModel.moveToBack()
                     Log.d("www", "save st")
                 }, {
                     // do nothing

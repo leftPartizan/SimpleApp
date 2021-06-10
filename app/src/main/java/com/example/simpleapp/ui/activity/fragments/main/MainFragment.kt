@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.example.simpleapp.R
 import com.example.simpleapp.databinding.FragmentMainBinding
 import com.example.simpleapp.ui.activity.MainActivity
-import com.example.simpleapp.ui.activity.fragments.settings.SettingsFragment
 import javax.inject.Inject
 
 
@@ -30,7 +28,7 @@ class MainFragment : Fragment() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (activity as MainActivity).activitySubComponent.inject(this)
+        (activity as MainActivity).activitySubComponent?.inject(this)
         super.onCreate(savedInstanceState)
     }
 
@@ -66,11 +64,7 @@ class MainFragment : Fragment() {
 
     private fun setSaveButtonListener() {
         binding.toolbarContent.mainButtonToolbarOpenSettings.setOnClickListener {
-            parentFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container_view, SettingsFragment())
-                .addToBackStack(null)
-                .commit()
+            viewModel.moveToSettingsScreen()
         }
     }
 }

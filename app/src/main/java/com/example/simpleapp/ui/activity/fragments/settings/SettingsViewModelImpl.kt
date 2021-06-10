@@ -1,25 +1,24 @@
 package com.example.simpleapp.ui.activity.fragments.settings
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.simpleapp.core.BaseViewModel
 import com.example.simpleapp.data.entities.UserSettings
+import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.addTo
 import javax.inject.Inject
 
 class SettingsViewModelImpl @Inject constructor(
-    private val settingsInteractor: SettingsInteractor
-) : ViewModel(), SettingsViewModel {
+    private val interactor: SettingsInteractor,
+    router: Router
+) : BaseViewModel(router), SettingsViewModel {
 
     override val userName = MutableLiveData<String>()
     override val userEmail = MutableLiveData<String>()
 
-    private val compositeDisposable = CompositeDisposable()
-
     override fun saveSettings(userName: String, userEmail: String): Completable {
-        return settingsInteractor.saveSettings(
+        return interactor.saveSettings(
             UserSettings(
                 userName = userName,
                 userEmail = userEmail
@@ -28,7 +27,7 @@ class SettingsViewModelImpl @Inject constructor(
     }
 
     override fun getSettings() {
-        settingsInteractor.getSettings().observeOn(AndroidSchedulers.mainThread())
+        interactor.getSettings().observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
                     val (name, email) = it
@@ -40,8 +39,8 @@ class SettingsViewModelImpl @Inject constructor(
             ).addTo(compositeDisposable)
     }
 
-    override fun onCleared() {
-        compositeDisposable.dispose()
-        super.onCleared()
+    override fun moveToBack() {
+        onBackPressed()
     }
+
 }
