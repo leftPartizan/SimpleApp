@@ -2,4 +2,5 @@
     <string name="app_name">SimpleApp</string>
     <string name="posterMovie">posterMovie</string>
     <string name="openingCrawlExample">sss</string>
+    <string name="settings_appbar_title">settings</string>
 </resources>

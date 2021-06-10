@@ -1,10 +1,11 @@
-package com.example.simpleapp.ui.activity
+package com.example.simpleapp.ui.activity.fragments.main
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.simpleapp.data.ItemMovie
+import com.example.simpleapp.data.entities.ItemMovie
 import com.example.simpleapp.databinding.ItemMovieBinding
 
 class Adapter : ListAdapter<ItemMovie, Adapter.MovieViewHolder>(ItemMovie.Diff) {
@@ -32,6 +33,7 @@ class Adapter : ListAdapter<ItemMovie, Adapter.MovieViewHolder>(ItemMovie.Diff) 
             )
         )
 
+        @SuppressLint("SetTextI18n")
         fun bind(item: ItemMovie) {
             itemMovie.titleMovie.text = item.title
             itemMovie.episodeMovie.text = "episode ${item.episode_id}"

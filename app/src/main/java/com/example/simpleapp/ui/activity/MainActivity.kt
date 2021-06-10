@@ -1,38 +1,52 @@
 package com.example.simpleapp.ui.activity
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import com.example.simpleapp.R
 import com.example.simpleapp.app.App
+import com.example.simpleapp.core.Screens
 import com.example.simpleapp.databinding.ActivityMainBinding
+import com.example.simpleapp.di.ActivitySubComponent
+import com.github.terrakok.cicerone.Forward
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
-    private val adapter: Adapter by lazy {
-        Adapter()
+    var activitySubComponent: ActivitySubComponent? = null
+
+    private val navigator: AppNavigator by lazy {
+        AppNavigator(this, R.id.fragment_container_view)
     }
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val viewModel: IMainViewModel by viewModels { viewModelFactory }
+    lateinit var navigatorHolder: NavigatorHolder
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.activitySubComponent().create(this).inject(this)
+        activitySubComponent = App.appComponent.activitySubComponent().create(this)
+        activitySubComponent?.inject(this)
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.updateAllMovies()
-        viewModel.listOfMovies.observe(this) {adapter.submitList(it)}
-        binding.recyclerView.adapter = adapter
+        navigator.applyCommands(arrayOf(Forward(Screens.mainFragment)))
+    }
+
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        navigatorHolder.removeNavigator()
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        activitySubComponent = null
         _binding = null
     }
 }
