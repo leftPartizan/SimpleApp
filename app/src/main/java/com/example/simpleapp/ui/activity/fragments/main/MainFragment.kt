@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.simpleapp.databinding.FragmentMainBinding
 import com.example.simpleapp.ui.activity.MainActivity
+import com.example.simpleapp.utills.observeNonNullState
 import javax.inject.Inject
 
 
@@ -44,27 +45,34 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setSaveButtonListener()
+        initView()
+        initListenerForViews()
+        subscribeToViewModelChanges()
+    }
 
-        viewModel.listOfMovies.observe(viewLifecycleOwner) {
+    private fun initView() {
+        binding.recyclerView.adapter = adapter
+    }
+
+    private fun subscribeToViewModelChanges() {
+        viewModel.initViewModel()
+        observeNonNullState(viewModel.listOfMovies) {
             adapter.submitList(it)
             binding.swipeRefresh.isRefreshing = false
         }
-        viewModel.updateAllMovies()
-        binding.recyclerView.adapter = adapter
+    }
+
+    private fun initListenerForViews() {
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.updateAllMovies(true)
+            viewModel.onRefreshMovies()
+        }
+        binding.toolbarContent.mainButtonToolbarOpenSettings.setOnClickListener {
+            viewModel.moveToSettingsScreen()
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    private fun setSaveButtonListener() {
-        binding.toolbarContent.mainButtonToolbarOpenSettings.setOnClickListener {
-            viewModel.moveToSettingsScreen()
-        }
     }
 }

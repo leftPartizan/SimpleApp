@@ -17,6 +17,12 @@ class SettingsRepositoryImpl @Inject constructor(
         PreferenceManager.getDefaultSharedPreferences(context)
     }
 
+    private val userName
+        get() = prefs.getString(USER_NAME, "") ?: ""
+
+    private val userEmail
+        get() = prefs.getString(USER_EMAIL, "") ?: ""
+
     override fun saveSettings(userSettings: UserSettings): Completable {
         return Completable.fromAction {
             val edit = prefs.edit()
@@ -27,9 +33,7 @@ class SettingsRepositoryImpl @Inject constructor(
     }
 
     private fun getSettingsFromPref(): UserSettings {
-        val name = prefs.getString(USER_NAME, "") ?: ""
-        val email = prefs.getString(USER_EMAIL, "") ?: ""
-        return UserSettings(name, email)
+        return UserSettings(userName, userEmail)
     }
 
     override fun getSettings(): Single<UserSettings> {
