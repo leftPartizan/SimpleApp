@@ -5,7 +5,6 @@ import com.example.simpleapp.core.BaseViewModel
 import com.example.simpleapp.data.entities.UserSettings
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.kotlin.addTo
 import javax.inject.Inject
 
@@ -17,16 +16,18 @@ class SettingsViewModelImpl @Inject constructor(
     override val userName = MutableLiveData<String>()
     override val userEmail = MutableLiveData<String>()
 
-    override fun saveSettings(userName: String, userEmail: String): Completable {
-        return interactor.saveSettings(
+    override fun saveSettingsAndMoveToBack(userName: String, userEmail: String) {
+        interactor.saveSettings(
             UserSettings(
                 userName = userName,
                 userEmail = userEmail
             )
-        ).observeOn(AndroidSchedulers.mainThread())
+        )
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { onBackPressed() }
     }
 
-    override fun getSettings() {
+    override fun initViewModel() {
         interactor.getSettings().observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
@@ -38,9 +39,4 @@ class SettingsViewModelImpl @Inject constructor(
                 }
             ).addTo(compositeDisposable)
     }
-
-    override fun moveToBack() {
-        onBackPressed()
-    }
-
 }

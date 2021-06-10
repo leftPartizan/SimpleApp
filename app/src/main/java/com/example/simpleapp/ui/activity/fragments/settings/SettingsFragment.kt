@@ -1,7 +1,6 @@
 package com.example.simpleapp.ui.activity.fragments.settings
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,16 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.simpleapp.databinding.FragmentSettingsBinding
 import com.example.simpleapp.ui.activity.MainActivity
-import io.reactivex.rxjava3.disposables.CompositeDisposable
-import io.reactivex.rxjava3.kotlin.addTo
+import com.example.simpleapp.utills.observeNonNullState
 import javax.inject.Inject
 
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
-
-    private val compositeDisposable = CompositeDisposable()
 
     private val userName
         get() = binding.userName.text.toString()
@@ -49,28 +45,29 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getSettings()
-        viewModel.userEmail.observe(viewLifecycleOwner) {
-            binding.userEmail.text.append(it)
-        }
-        viewModel.userName.observe(viewLifecycleOwner) {
+
+        subscribeToViewModelChanges()
+        initListenerForViews()
+    }
+
+    private fun subscribeToViewModelChanges() {
+        viewModel.initViewModel()
+        observeNonNullState(viewModel.userName) {
             binding.userName.text.append(it)
         }
+        observeNonNullState(viewModel.userEmail) {
+            binding.userEmail.text.append(it)
+        }
+    }
+
+    private fun initListenerForViews() {
         binding.saveSettings.setOnClickListener {
-            viewModel.saveSettings(userName, userEmail).subscribe(
-                {
-                    viewModel.moveToBack()
-                    Log.d("www", "save st")
-                }, {
-                    // do nothing
-                }
-            ).addTo(compositeDisposable)
+            viewModel.saveSettingsAndMoveToBack(userName, userEmail)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        compositeDisposable.clear()
     }
 }

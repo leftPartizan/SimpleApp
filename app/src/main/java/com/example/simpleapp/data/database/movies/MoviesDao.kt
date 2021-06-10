@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
 
 @Dao
@@ -16,5 +17,5 @@ interface MoviesDao {
     fun updateAllMovies(listMoviesEntity: List<MoviesEntity>)
 
     @Query("SELECT * FROM movies")
-    fun getAllMovies(): Single<List<MoviesEntity>>
+    fun getAllMovies(): Maybe<List<MoviesEntity>>
 }

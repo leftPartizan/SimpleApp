@@ -16,7 +16,20 @@ class MainViewModelImpl @Inject constructor(
 
     override val listOfMovies = MutableLiveData<List<ItemMovie>>()
 
-    override fun updateAllMovies(forceUpdateCache: Boolean) {
+    override fun initViewModel() {
+        updateMovies(false)
+    }
+
+    override fun onRefreshMovies() {
+        listOfMovies.postValue(emptyList())
+        updateMovies(true)
+    }
+
+    override fun moveToSettingsScreen() {
+        onOpenNewScreen(Screens.settingsFragment)
+    }
+
+    private fun updateMovies(forceUpdateCache: Boolean) {
         interactor.getAllMovies(forceUpdateCache)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
@@ -27,9 +40,5 @@ class MainViewModelImpl @Inject constructor(
                     //  do nothing
                 }
             ).addTo(compositeDisposable)
-    }
-
-    override fun moveToSettingsScreen() {
-        onOpenNewScreen(Screens.settingsFragment)
     }
 }
