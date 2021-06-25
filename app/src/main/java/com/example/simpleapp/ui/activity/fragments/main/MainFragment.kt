@@ -17,8 +17,8 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private val adapter: Adapter by lazy {
-        Adapter()
+    private val movieAdapter: MovieAdapter by lazy {
+        MovieAdapter(viewModel)
     }
 
     @Inject
@@ -51,13 +51,13 @@ class MainFragment : Fragment() {
     }
 
     private fun initView() {
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = movieAdapter
     }
 
     private fun subscribeToViewModelChanges() {
         viewModel.initViewModel()
         observeNonNullState(viewModel.listOfMovies) {
-            adapter.submitList(it)
+            movieAdapter.submitList(it)
             binding.swipeRefresh.isRefreshing = false
         }
     }

@@ -5,20 +5,26 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "movies")
-data class MoviesEntity(
+data class MovieEntity(
 
     @ColumnInfo(name = "title")
     val title: String,
 
     @PrimaryKey
-    val episode_id: String,
+    val episodeId: String,
 
     @ColumnInfo(name = "opening_crawl")
-    val opening_crawl: String,
+    val openingCrawl: String,
+
+    @ColumnInfo(name = "director")
+    val director: String,
 
     @ColumnInfo(name = "producer")
     val producer: String,
 
     @ColumnInfo(name = "release_date")
-    val release_date: String,
+    val releaseDate: String,
+
+    @ColumnInfo(name = "characters_id")
+    val charactersId: List<Int>
 )

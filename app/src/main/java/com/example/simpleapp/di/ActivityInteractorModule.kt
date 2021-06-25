@@ -1,9 +1,9 @@
 package com.example.simpleapp.di
 
-import com.example.simpleapp.ui.activity.fragments.main.MainInteractor
-import com.example.simpleapp.ui.activity.fragments.main.MainInteractorImpl
-import com.example.simpleapp.ui.activity.fragments.settings.SettingsInteractor
-import com.example.simpleapp.ui.activity.fragments.settings.SettingsInteractorImpl
+import com.example.simpleapp.domain.interactors.MainInteractor
+import com.example.simpleapp.domain.interactors.MainInteractorImpl
+import com.example.simpleapp.domain.interactors.SettingsInteractor
+import com.example.simpleapp.domain.interactors.SettingsInteractorImpl
 import dagger.Binds
 import dagger.Module
 

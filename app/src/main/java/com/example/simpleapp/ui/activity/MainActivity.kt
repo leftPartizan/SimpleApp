@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        navigator.applyCommands(arrayOf(Forward(Screens.mainFragment)))
+        navigator.applyCommands(arrayOf(Forward(Screens.MainScreen)))
     }
 
     override fun onResumeFragments() {

@@ -1,4 +1,4 @@
-package com.example.simpleapp.data.repository.userSettings
+package com.example.simpleapp.domain.repositories
 
 import com.example.simpleapp.data.entities.UserSettings
 import io.reactivex.rxjava3.core.Completable

@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.simpleapp.data.database.movies.MovieEntity
 import com.example.simpleapp.data.database.movies.MoviesDao
-import com.example.simpleapp.data.database.movies.MoviesEntity
 
-@Database(entities = [MoviesEntity::class], version = 1, exportSchema = false)
+@Database(entities = [MovieEntity::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class DataBase : RoomDatabase() {
 
     abstract fun getMoviesDao(): MoviesDao
