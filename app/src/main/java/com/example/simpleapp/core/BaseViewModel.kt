@@ -12,7 +12,7 @@ open class BaseViewModel @Inject constructor(
 
     protected val compositeDisposable = CompositeDisposable()
 
-    fun onOpenNewScreen(screen: Screen) {
+    fun navigateTo(screen: Screen) {
         router.navigateTo(screen)
     }
 

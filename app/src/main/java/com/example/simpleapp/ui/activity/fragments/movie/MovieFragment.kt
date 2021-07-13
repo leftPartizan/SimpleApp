@@ -1,30 +1,29 @@
-package com.example.simpleapp.ui.activity.fragments.main
+package com.example.simpleapp.ui.activity.fragments.movie
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.example.simpleapp.databinding.FragmentMainBinding
+import com.example.simpleapp.databinding.FragmentMovieBinding
 import com.example.simpleapp.ui.activity.MainActivity
 import com.example.simpleapp.utills.observeNonNullState
 import javax.inject.Inject
 
+class MovieFragment : Fragment() {
 
-class MainFragment : Fragment() {
-
-    private var _binding: FragmentMainBinding? = null
+    private val id = arguments?.getString(MOVIE_ID) ?: "1"
+    private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
-    private val movieAdapter: MovieAdapter by lazy {
-        MovieAdapter(viewModel)
-    }
+    private val adapter = PeopleAdapter()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: MainViewModel by viewModels<MainViewModelImpl> {
+    private val viewModel: MovieViewModel by viewModels<MovieViewModelImpl> {
         viewModelFactory
     }
 
@@ -33,12 +32,13 @@ class MainFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -46,33 +46,38 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initView()
-        initListenerForViews()
         subscribeToViewModelChanges()
     }
 
     private fun initView() {
-        binding.recyclerView.adapter = movieAdapter
+        binding.rwFragmentMovie.adapter = adapter
     }
 
     private fun subscribeToViewModelChanges() {
-        viewModel.initViewModel()
-        observeNonNullState(viewModel.listOfMovies) {
-            movieAdapter.submitList(it)
-            binding.swipeRefresh.isRefreshing = false
-        }
-    }
+        viewModel.getMovie(id)
+        observeNonNullState(viewModel.movie) {
 
-    private fun initListenerForViews() {
-        binding.swipeRefresh.setOnRefreshListener {
-            viewModel.onRefreshMovies()
+            with(binding) {
+                titleMovie.text = it.title
+                episodeMovie.text = it.episodeId
+                producerMovie.text = it.producer
+                releaseDateMovie.text = it.releaseDate
+                openingCrawlMovieText.text = it.openingCrawl
+
+                adapter.submitList(it.charactersInfo)
+            }
         }
-        binding.toolbarContent.mainButtonToolbarOpenSettings.setOnClickListener {
-            viewModel.moveToSettingsScreen()
+        observeNonNullState(viewModel.error) {
+            Toast.makeText(requireContext(), "что-то пошло не так", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        const val MOVIE_ID = "MOVIE_ID"
     }
 }

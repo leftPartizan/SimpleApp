@@ -1,4 +1,4 @@
-package com.example.simpleapp.ui.activity.fragments.settings
+package com.example.simpleapp.domain.interactors
 
 import com.example.simpleapp.data.entities.UserSettings
 import io.reactivex.rxjava3.core.Completable

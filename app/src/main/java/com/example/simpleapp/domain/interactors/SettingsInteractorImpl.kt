@@ -1,7 +1,7 @@
-package com.example.simpleapp.ui.activity.fragments.settings
+package com.example.simpleapp.domain.interactors
 
 import com.example.simpleapp.data.entities.UserSettings
-import com.example.simpleapp.data.repository.userSettings.SettingsRepository
+import com.example.simpleapp.domain.repositories.SettingsRepository
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject

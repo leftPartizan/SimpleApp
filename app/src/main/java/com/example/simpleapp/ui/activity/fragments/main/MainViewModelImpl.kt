@@ -1,12 +1,17 @@
 package com.example.simpleapp.ui.activity.fragments.main
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.simpleapp.core.BaseViewModel
 import com.example.simpleapp.core.Screens
-import com.example.simpleapp.data.entities.ItemMovie
+import com.example.simpleapp.domain.entities.MovieShortModel
+import com.example.simpleapp.domain.interactors.MainInteractor
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.kotlin.addTo
+import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainViewModelImpl @Inject constructor(
@@ -14,10 +19,15 @@ class MainViewModelImpl @Inject constructor(
     router: Router
 ) : BaseViewModel(router), MainViewModel {
 
-    override val listOfMovies = MutableLiveData<List<ItemMovie>>()
+    override val listOfMovies: MutableLiveData<List<MovieShortModel>> =
+        MutableLiveData<List<MovieShortModel>>()
 
     override fun initViewModel() {
         updateMovies(false)
+    }
+
+    override fun onMovieClick(movieId: String) {
+        navigateTo(Screens.MovieScreen(movieId))
     }
 
     override fun onRefreshMovies() {
@@ -26,19 +36,19 @@ class MainViewModelImpl @Inject constructor(
     }
 
     override fun moveToSettingsScreen() {
-        onOpenNewScreen(Screens.settingsFragment)
+        navigateTo(Screens.SettingsScreen)
     }
 
     private fun updateMovies(forceUpdateCache: Boolean) {
-        interactor.getAllMovies(forceUpdateCache)
+        Observable.timer(1, TimeUnit.SECONDS).subscribe() { interactor.getAllMovies(forceUpdateCache)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    if (forceUpdateCache) listOfMovies.postValue(emptyList())
                     listOfMovies.postValue(it)
                 }, {
                     //  do nothing
                 }
             ).addTo(compositeDisposable)
+        }
     }
 }
