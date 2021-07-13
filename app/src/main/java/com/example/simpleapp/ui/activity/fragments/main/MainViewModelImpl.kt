@@ -1,5 +1,6 @@
 package com.example.simpleapp.ui.activity.fragments.main
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.simpleapp.core.BaseViewModel
 import com.example.simpleapp.core.Screens
@@ -7,7 +8,10 @@ import com.example.simpleapp.domain.entities.MovieShortModel
 import com.example.simpleapp.domain.interactors.MainInteractor
 import com.github.terrakok.cicerone.Router
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.kotlin.addTo
+import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainViewModelImpl @Inject constructor(
@@ -36,15 +40,15 @@ class MainViewModelImpl @Inject constructor(
     }
 
     private fun updateMovies(forceUpdateCache: Boolean) {
-        interactor.getAllMovies(forceUpdateCache)
+        Observable.timer(1, TimeUnit.SECONDS).subscribe() { interactor.getAllMovies(forceUpdateCache)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    if (forceUpdateCache) listOfMovies.postValue(emptyList())
                     listOfMovies.postValue(it)
                 }, {
                     //  do nothing
                 }
             ).addTo(compositeDisposable)
+        }
     }
 }

@@ -27,7 +27,7 @@ object Screens {
             return MovieFragment()
                 .apply {
                     arguments = Bundle().apply {
-                        putString(MovieFragment.ARGUMENT, arg) } }
+                        putString(MovieFragment.MOVIE_ID, arg) } }
         }
     }
 }

@@ -18,7 +18,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../RxRiddles/src/main/kotlin/com/vanniktech/rxriddles/main.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/simpleapp/app/App.kt">
           <value>
             <set />
           </value>
@@ -173,7 +183,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/simpleapp/di/ActivitySubComponent.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/simpleapp/di/AppComponent.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/example/simpleapp/di/NetworkModule.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/simpleapp/di/ViewModelModule.kt">
           <value>
             <set />
           </value>
@@ -278,6 +303,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/simpleapp/ui/activity/fragments/movie/MovieViewModelImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/example/simpleapp/ui/activity/fragments/movie/PeopleAdapter.kt">
           <value>
             <set />
@@ -333,12 +363,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/example/simpleapp/MovieViewModelTest.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/example/simpleapp/RxImmediateSchedulerRule.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/test/java/com/example/simpleapp/TestRetrofit.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/build.gradle">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../mobappb2c-android/.idea/codeStyles/Project.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../mobappb2c-android/app/build.gradle">
           <value>
             <set />
           </value>
@@ -373,12 +423,37 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../mobappb2c-android/app/src/main/kotlin/ru/filit/mvideo/b2c/ui/main/fragments/main/view/MainFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../mobappb2c-android/app/src/main/kotlin/ru/filit/mvideo/b2c/ui/main/fragments/main/viewmodel/MainFragmentViewModelImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../mobappb2c-android/app/src/main/kotlin/ru/filit/mvideo/b2c/ui/main/fragments/main_new/viewmodel/NewMainViewModelImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../mobappb2c-android/app/src/main/kotlin/ru/filit/mvideo/b2c/ui/product/fragments/properties/viewmodel/PropertiesFragmentViewModelImpl.kt">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../mobappb2c-android/app/src/main/kotlin/ru/filit/mvideo/b2c/ui/product/interactor/PropertiesActivityInteractorImpl.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../mobappb2c-android/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../mobappb2c-android/common-android-library.gradle">
           <value>
             <set />
           </value>

@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 data class MovieResponseBody(
+    @SerializedName("count") val count : Int,
     @SerializedName("results") val results: List<MovieDTO>
 )
 
