@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.simpleapp.data.entities.People
 import com.example.simpleapp.databinding.ItemPeopleBinding
 
-class PeopleAdapter() :
+class PeopleAdapter :
     ListAdapter<People, PeopleAdapter.PeopleViewHolder>(People) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeopleViewHolder {
@@ -23,9 +23,9 @@ class PeopleAdapter() :
     }
 
     class PeopleViewHolder(
-        private val itemPeople: ItemPeopleBinding,
+        private val itemPeopleView: ItemPeopleBinding,
     ) :
-        RecyclerView.ViewHolder(itemPeople.root) {
+        RecyclerView.ViewHolder(itemPeopleView.root) {
 
         constructor(parent: ViewGroup) : this(
             ItemPeopleBinding.inflate(
@@ -36,7 +36,7 @@ class PeopleAdapter() :
         )
 
         fun bind(item: People) {
-            with(itemPeople) {
+            with(itemPeopleView) {
                 peopleName.text = item.name
                 peopleHeight.text = item.height
                 peopleMass.text = item.mass

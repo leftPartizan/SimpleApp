@@ -28,15 +28,15 @@ class MoviesRepositoryImpl @Inject constructor(
         return moviesDao.getAllMovies()
             .subscribeOn(Schedulers.io())
             .map { it.map(movieMapper::mapEntityToMovieDomain) }
-            .doOnError { Log.d("www", "it $it") }
-            .doOnSuccess { Log.d("www", "it $it")  }
     }
 
     private fun getAllMoviesFromNetwork(): Single<List<Movie>> {
         return swapiService.getAllMovies()
+            .doOnSuccess { Log.d("www", "load from network") }
             .subscribeOn(Schedulers.io())
-            .map { Log.d("www", "${it}")
-                it.results.map(movieMapper::mapDtoToMovieDomain) }
+            .map {
+                it.results.map(movieMapper::mapDtoToMovieDomain)
+            }
             .doOnSuccess { list ->
                 moviesDao.updateAllMovies(list.map(movieMapper::mapMovieDomainToEntity))
             }
@@ -46,7 +46,7 @@ class MoviesRepositoryImpl @Inject constructor(
         return if (forceUpdateCache) {
             getAllMoviesFromNetwork()
         } else {
-            getAllMoviesFromDB().switchIfEmpty(getAllMoviesFromNetwork())
+            getAllMoviesFromDB().filter { it.isNotEmpty() }.switchIfEmpty(getAllMoviesFromNetwork())
         }
     }
 

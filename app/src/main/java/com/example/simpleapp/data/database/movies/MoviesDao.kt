@@ -19,5 +19,5 @@ interface MoviesDao {
     fun getAllMovies(): Maybe<List<MovieEntity>>
 
     @Query("SELECT * FROM movies where episodeId = :episodeId")
-    fun getMovie(episodeId : String): Maybe<MovieEntity>
+    fun getMovie(episodeId: String): Maybe<MovieEntity>
 }

@@ -40,7 +40,6 @@ class MainViewModelImpl @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    if (forceUpdateCache) listOfMovies.postValue(emptyList())
                     listOfMovies.postValue(it)
                 }, {
                     //  do nothing

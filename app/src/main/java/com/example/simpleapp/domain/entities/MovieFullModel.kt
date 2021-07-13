@@ -16,7 +16,10 @@ data class MovieFullModel(
             return oldItem.title == newItem.title
         }
 
-        override fun areContentsTheSame(oldItem: MovieShortModel, newItem: MovieShortModel): Boolean {
+        override fun areContentsTheSame(
+            oldItem: MovieShortModel,
+            newItem: MovieShortModel
+        ): Boolean {
             return oldItem == newItem
         }
     }

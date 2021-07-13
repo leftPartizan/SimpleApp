@@ -9,8 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.simpleapp.databinding.FragmentSettingsBinding
 import com.example.simpleapp.ui.activity.MainActivity
-import com.example.simpleapp.ui.activity.fragments.settings.SettingsViewModel
-import com.example.simpleapp.ui.activity.fragments.settings.SettingsViewModelImpl
 import com.example.simpleapp.utills.observeNonNullState
 import javax.inject.Inject
 

@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class MovieMapper @Inject constructor() {
 
-    fun mapDtoToEntity(movieDTO: MovieDTO): MovieEntity{
+    fun mapDtoToEntity(movieDTO: MovieDTO): MovieEntity {
         return movieDTO.run {
             MovieEntity(
                 title = title,
@@ -16,12 +16,12 @@ class MovieMapper @Inject constructor() {
                 openingCrawl = openingCrawl,
                 producer = producer,
                 releaseDate = releaseDate,
-                charactersId = charactersURL.map { it[it.length-2].code }
+                charactersId = charactersURL.map { it[it.length - 2].code }
             )
         }
     }
 
-    fun mapEntityToMovieDomain(movieEntity : MovieEntity): Movie {
+    fun mapEntityToMovieDomain(movieEntity: MovieEntity): Movie {
         return movieEntity.run {
             Movie(
                 title = title,
@@ -35,7 +35,7 @@ class MovieMapper @Inject constructor() {
         }
     }
 
-    fun mapDtoToMovieDomain(movieDTO: MovieDTO): Movie{
+    fun mapDtoToMovieDomain(movieDTO: MovieDTO): Movie {
         return movieDTO.run {
             Movie(
                 title = title,
@@ -44,12 +44,12 @@ class MovieMapper @Inject constructor() {
                 openingCrawl = openingCrawl,
                 producer = producer,
                 releaseDate = releaseDate,
-                charactersId = charactersURL.map { it[it.length-2].code }
+                charactersId = charactersURL.map { it[it.length - 2].code }
             )
         }
     }
 
-    fun mapMovieDomainToEntity(movie: Movie): MovieEntity{
+    fun mapMovieDomainToEntity(movie: Movie): MovieEntity {
         return movie.run {
             MovieEntity(
                 title = title,

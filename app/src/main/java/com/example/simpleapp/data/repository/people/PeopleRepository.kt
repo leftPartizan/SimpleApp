@@ -13,6 +13,6 @@ class PeopleRepository @Inject constructor(
 ) {
     fun getPeople(id: Int): Single<People> = swapiService
         .getPeople(id)
-        .map{ mapper.mapDtoToPeopleDomain(id, it) }
+        .map { mapper.mapDtoToPeopleDomain(id, it) }
         .subscribeOn(Schedulers.io())
 }

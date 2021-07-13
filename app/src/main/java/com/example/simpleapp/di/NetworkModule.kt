@@ -23,6 +23,7 @@ class NetworkModule {
             level = HttpLoggingInterceptor.Level.BODY
         })
         .readTimeout(40, TimeUnit.SECONDS)
+        .connectTimeout(30, TimeUnit.SECONDS)
         .build()
 
     @Provides

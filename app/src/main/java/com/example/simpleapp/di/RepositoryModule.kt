@@ -1,9 +1,9 @@
 package com.example.simpleapp.di
 
-import com.example.simpleapp.domain.repositories.MoviesRepository
 import com.example.simpleapp.data.repository.movies.MoviesRepositoryImpl
-import com.example.simpleapp.domain.repositories.SettingsRepository
 import com.example.simpleapp.data.repository.userSettings.SettingsRepositoryImpl
+import com.example.simpleapp.domain.repositories.MoviesRepository
+import com.example.simpleapp.domain.repositories.SettingsRepository
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
