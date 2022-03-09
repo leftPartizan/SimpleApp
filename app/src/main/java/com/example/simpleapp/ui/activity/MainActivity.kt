@@ -48,5 +48,6 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         activitySubComponent = null
         _binding = null
+
     }
 }
